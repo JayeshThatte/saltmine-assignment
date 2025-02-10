@@ -23,7 +23,12 @@
     * Tax = 1.88
     * Total = 16.90
 2. People will hit the API without authentication (**unsafe**) - Use AWS Cognito Authorizer instead
+3. People will add only one product at a time to the cart
 
-# Steps to run the sever
+# Steps to run the server
 1. Start the price API `npm run serve-products`
 1. Start the cart server `npm run cart-server`
+
+# Steps to test
+1. Start the price API `npm run serve-products`
+2. Run all tests using jest `npm test`

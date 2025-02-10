@@ -41,12 +41,12 @@ app.post("/cart/add", async (req, res) => {
 
     // Basic validation
 
-    if (!productName || !quantity || quantity <= 0 || !(parseInt(quantity, 10) === quantity)) {
-        return res.status(400).json({ error: "Invalid product name or quantity" });
+    if (!quantity || quantity <= 0 || !(parseInt(quantity, 10) === quantity)) {
+        return res.status(400).json({ error: "Invalid product quantity", cart: req.session.cart  });
     }
 
     else if (!['cheerios', 'cornflakes', 'frosties', 'shreddies', 'weetabix'].includes(productName)) {
-        return res.status(404).json({ error: "Invalid product name" })
+        return res.status(404).json({ error: "Invalid product name", cart: req.session.cart })
     }
 
     try {
@@ -71,3 +71,5 @@ app.post("/cart/add", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
+module.exports = app
