@@ -68,6 +68,21 @@ app.post("/cart/add", async (req, res) => {
     }
 });
 
+// Get cart state with calculated totals
+app.get("/cart", (req, res) => {
+    const cart = req.session.cart;
+    if (!cart.length) {
+      return res.json({ message: "Cart is empty", cart, subtotal: 0, tax: 0, total: 0 });
+    }
+  
+    const subtotal = cart.reduce((sum, item) => sum + item.total, 0);
+    const tax = Math.round((subtotal * TAX_RATE+Number.EPSILON)*100)/100;
+    const total = Math.round((subtotal + tax + Number.EPSILON) * 100) / 100;
+  
+  
+    res.json({ cart, subtotal, tax, total });
+  });
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

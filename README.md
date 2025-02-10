@@ -26,9 +26,9 @@
 3. People will add only one product at a time to the cart
 
 # Steps to run the server
-1. Start the price API `npm run serve-products`
-1. Start the cart server `npm run cart-server`
+1. Start the price API `npm run serve-products` **Ensure port 3001 is free**
+1. Start the cart server `npm run cart-server` **Ensure port 3000 is free**
 
 # Steps to test
-1. Start the price API `npm run serve-products`
-2. Run all tests using jest `npm test`
+1. Start the price API `npm run serve-products` **Ensure port 3001 is free**
+2. Run all tests using jest `npm test` **Ensure port 3000 is free**
