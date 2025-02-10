@@ -32,3 +32,6 @@
 # Steps to test
 1. Start the price API `npm run serve-products` **Ensure port 3001 is free**
 2. Run all tests using jest `npm test` **Ensure port 3000 is free**
+
+# How to use
+- Once both the servers are running , you can use post man
