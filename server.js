@@ -80,7 +80,7 @@ app.get("/cart", (req, res) => {
     const total = Math.round((subtotal + tax + Number.EPSILON) * 100) / 100;
   
   
-    res.json({ cart, subtotal, tax, total });
+    res.json({cart:cart, subtotal:subtotal, tax:tax, total:total });
   });
 
 app.listen(PORT, () => {

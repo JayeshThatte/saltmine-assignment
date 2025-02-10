@@ -48,4 +48,37 @@ describe("Shopping Cart API Tests", () => {
     expect(res.body.cart).toEqual([
     ]);
   });
+
+  test("Should get valid cart state", async () => {
+
+    let res = await testSession.post("/cart/add").send({
+      productName: "cornflakes",
+      quantity: 2,
+    });
+
+    res = await testSession.post("/cart/add").send({
+      productName: "weetabix",
+      quantity: 1,
+    });
+
+    let cart_state = await testSession.get("/cart")
+
+    expect(cart_state.status).toBe(200);
+    expect(cart_state.body.subtotal).toEqual(15.02);
+    expect(cart_state.body.tax).toEqual(1.88);
+    expect(cart_state.body.total).toEqual(16.9);
+    expect(res.body.cart).toEqual([
+        {
+          "productName": "cornflakes",
+          "quantity": 2,
+          "total": 5.04
+        },
+        {
+          "productName": "weetabix",
+          "quantity": 1,
+          "total": 9.98
+        }
+      ]);
+  });
+
 })
