@@ -22,4 +22,8 @@
     * Subtotal = 15.02
     * Tax = 1.88
     * Total = 16.90
+2. People will hit the API without authentication (**unsafe**) - Use AWS Cognito Authorizer instead
 
+# Steps to run the sever
+1. Start the price API `npm run serve-products`
+1. Start the cart server `npm run cart-server`
